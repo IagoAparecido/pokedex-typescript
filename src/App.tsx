@@ -18,7 +18,10 @@ function App() {
   const indexOfFirstPokemon = indexOfLastPokemon - perPage;
   const currentData = data.slice(indexOfFirstPokemon, indexOfLastPokemon);
 
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
   const getPokemon = async () => {
+    setIsLoading(true);
     const response = await axios.get<{ results: PokemonResult[] }>(
       "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=200"
     );
@@ -32,6 +35,7 @@ function App() {
 
     setData(pokemonData.map((response) => response.data));
     setOriginalData(pokemonData.map((response) => response.data));
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -59,17 +63,22 @@ function App() {
   return (
     <div className="App">
       <Header pokemonFilter={pokemonFilter} />
-      <main>
-        {currentData.map((pokemon) => (
-          <Card
-            key={pokemon.name}
-            name={pokemon.name}
-            img={pokemon.sprites.front_default}
-            type={pokemon.types.map((type) => type.type.name)}
-            id={pokemon.id}
-          />
-        ))}
-      </main>
+      {isLoading ? (
+        // Adicionar o loading quando o estado isLoading é verdadeiro
+        <div className="spinner"></div>
+      ) : (
+        <main>
+          {currentData.map((pokemon) => (
+            <Card
+              key={pokemon.name}
+              name={pokemon.name}
+              img={pokemon.sprites.front_default}
+              type={pokemon.types.map((type) => type.type.name)}
+              id={pokemon.id}
+            />
+          ))}
+        </main>
+      )}
       <Paginate
         className="paginate"
         pageCount={Math.ceil(data.length / perPage)}

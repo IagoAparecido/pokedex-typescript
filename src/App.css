@@ -24,14 +24,29 @@
 
 .paginate li {
   cursor: pointer;
-  transition: 0.4s;
-}
-
-.paginate li:hover {
-  border-bottom: 1px solid;
 }
 
 .active-page {
   margin-top: -10px;
   border-bottom: 1px solid;
+}
+
+.spinner {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  border-top-color: green;
+  animation: spin 1s ease-in-out infinite;
+  margin: auto;
+  margin-top: 100px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
