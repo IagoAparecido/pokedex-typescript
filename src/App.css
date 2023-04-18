@@ -30,3 +30,8 @@
 .paginate li:hover {
   border-bottom: 1px solid;
 }
+
+.active-page {
+  margin-top: -10px;
+  border-bottom: 1px solid;
+}

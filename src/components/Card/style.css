@@ -5,8 +5,14 @@
   height: 250px;
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   align-items: center;
+  transition: 0.4s;
+  background-color: white;
+}
+
+.poke_card:hover {
+  cursor: pointer;
+  transform: scale(1.03);
 }
 
 .poke_img {
@@ -17,6 +23,11 @@
 }
 .poke_img img {
   width: 150px;
+}
+.poke_img span {
+  color: red;
+  position: absolute;
+  margin-right: 150px;
 }
 
 .poke_info {

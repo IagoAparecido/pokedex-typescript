@@ -24,10 +24,12 @@ header div form {
 
 header div form input {
   height: 30px;
-  padding-inline: 10px;
+  padding-inline: 20px;
 }
 
-header dvi form button {
-  height: 30px;
-  padding-inline: 10px;
+.button {
+  border: none;
+  position: absolute;
+  background-color: white;
+  color: black;
 }

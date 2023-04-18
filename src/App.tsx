@@ -11,6 +11,7 @@ import { Pokemon, PokemonResult } from "./types/Pokemon";
 function App() {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [data, setData] = useState<Pokemon[]>([]);
+  const [originalData, setOriginalData] = useState<Pokemon[]>([]);
   const [perPage] = useState<number>(20);
 
   const indexOfLastPokemon = currentPage * perPage;
@@ -30,6 +31,7 @@ function App() {
     );
 
     setData(pokemonData.map((response) => response.data));
+    setOriginalData(pokemonData.map((response) => response.data));
   };
 
   useEffect(() => {
@@ -40,9 +42,23 @@ function App() {
     setCurrentPage(data.selected + 1);
   };
 
+  const pokemonFilter = (name: string) => {
+    var filteredPokemons = [];
+    if (name === "") {
+      setData(originalData);
+      return;
+    }
+    for (var i in originalData) {
+      if (originalData[i].name.includes(name)) {
+        filteredPokemons.push(originalData[i]);
+      }
+    }
+    setData(filteredPokemons);
+  };
+
   return (
     <div className="App">
-      <Header />
+      <Header pokemonFilter={pokemonFilter} />
       <main>
         {currentData.map((pokemon) => (
           <Card
@@ -50,6 +66,7 @@ function App() {
             name={pokemon.name}
             img={pokemon.sprites.front_default}
             type={pokemon.types.map((type) => type.type.name)}
+            id={pokemon.id}
           />
         ))}
       </main>
@@ -62,6 +79,7 @@ function App() {
         previousLabel="< previous"
         renderOnZeroPageCount={null}
         pageRangeDisplayed={5}
+        activeClassName="active-page"
       />
     </div>
   );
