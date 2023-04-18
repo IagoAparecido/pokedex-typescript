@@ -1,0 +1,33 @@
+header {
+  background-color: #f3f3f3;
+  display: flex;
+  justify-content: center;
+}
+
+header div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #f9f9f9f9;
+  width: 80%;
+}
+
+header div img {
+  width: 150px;
+}
+
+header div form {
+  display: flex;
+  gap: 5px;
+}
+
+header div form input {
+  height: 30px;
+  padding-inline: 10px;
+}
+
+header dvi form button {
+  height: 30px;
+  padding-inline: 10px;
+}

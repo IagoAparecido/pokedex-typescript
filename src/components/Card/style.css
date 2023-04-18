@@ -1,0 +1,34 @@
+.poke_card {
+  border: 1px solid;
+  border-radius: 10px;
+  width: 200px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.poke_img {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+.poke_img img {
+  width: 150px;
+}
+
+.poke_info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.poke_info h1 {
+  font-size: 1.4rem;
+}
+.poke_info p {
+  font-size: 0.8rem;
+}
