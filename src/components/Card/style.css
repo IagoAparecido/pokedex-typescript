@@ -1,5 +1,5 @@
 .poke_card {
-  border: 1px solid;
+  /* border: 1px solid; */
   border-radius: 10px;
   width: 200px;
   height: 250px;
@@ -8,6 +8,7 @@
   align-items: center;
   transition: 0.4s;
   background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
 .poke_card:hover {
@@ -23,6 +24,7 @@
 }
 .poke_img img {
   width: 150px;
+  z-index: 2;
 }
 .poke_img span {
   color: red;
@@ -39,7 +41,103 @@
 
 .poke_info h1 {
   font-size: 1.4rem;
+  text-align: center;
 }
 .poke_info p {
   font-size: 0.8rem;
+}
+
+.chao {
+  background-color: white;
+  height: 70px;
+  width: 150px;
+  position: absolute;
+  z-index: 1;
+  margin-top: 90px;
+  border-radius: 50%;
+}
+
+.grass {
+  background-color: #defde0;
+  border-bottom: 4px solid #7ac74c;
+}
+
+.fire {
+  background-color: #fddfdf;
+  border-bottom: 4px solid #d06b54;
+}
+
+.water {
+  background-color: #def3fd;
+  border-bottom: 4px solid #6390f0;
+}
+
+.bug {
+  background-color: #f8d5a3;
+  border-bottom: 4px solid #a8b820;
+}
+
+.normal {
+  background-color: #f5f5f5;
+  border-bottom: 4px solid #a8a878;
+}
+
+.poison {
+  background-color: #f3def6;
+  border-bottom: 4px solid #9b69d9;
+}
+
+.electric {
+  background-color: #fcf7de;
+  border-bottom: 4px solid #eed535;
+}
+
+.fairy {
+  background-color: #fceaff;
+  border-bottom: 4px solid #d685ad;
+}
+
+.fighting {
+  background-color: #e6e0d4;
+  border-bottom: 4px solid #c22e28;
+}
+
+.psychic {
+  background-color: #fff1f1;
+  border-bottom: 4px solid #f85888;
+}
+
+.rock {
+  background-color: #e2dcc7;
+  border-bottom: 4px solid #b8a038;
+}
+
+.ground {
+  background-color: #f4e7da;
+  border-bottom: 4px solid #e0c068;
+}
+
+.ghost {
+  background-color: #e2e2e2;
+  border-bottom: 4px solid #735797;
+}
+
+.ice {
+  background-color: #def3fd;
+  border-bottom: 4px solid #98d8d8;
+}
+
+.dragon {
+  background-color: #97b3e6;
+  border-bottom: 4px solid #7038f8;
+}
+
+.steel {
+  background-color: #def2f1;
+  border-bottom: 4px solid #b8b8d0;
+}
+
+.dark {
+  background-color: #e2e2e2;
+  border-bottom: 4px solid #705848;
 }

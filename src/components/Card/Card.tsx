@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import "./style.css";
 
 type Props = {
@@ -17,16 +16,19 @@ function Card({ type, name, img, id }: Props) {
   };
 
   return (
-    <div className="poke_card">
-      <div className="poke_img">
-        <span>#{id}</span>
-        <img src={img} alt="" />
+    <>
+      <div className={`poke_card ${type[0]}`}>
+        <div className="poke_img">
+          <span>#{id}</span>
+          <img src={img} alt="" />
+        </div>
+        <span className="chao"></span>
+        <div className="poke_info">
+          <p>{typeHandle()}</p>
+          <h1>{name}</h1>
+        </div>
       </div>
-      <div className="poke_info">
-        <p>{typeHandle()}</p>
-        <h1>{name}</h1>
-      </div>
-    </div>
+    </>
   );
 }
 

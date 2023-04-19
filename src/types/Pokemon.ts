@@ -19,3 +19,7 @@ export interface PokemonResult {
 export interface PokemonResponse {
   results: PokemonResult[];
 }
+
+export type TypeProps = {
+  name: string;
+};

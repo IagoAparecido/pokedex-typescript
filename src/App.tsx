@@ -6,13 +6,15 @@ import Paginate from "react-paginate";
 import Header from "./components/Header/Header";
 import Card from "./components/Card/Card";
 
-import { Pokemon, PokemonResult } from "./types/Pokemon";
+import { Pokemon, PokemonResult, TypeProps } from "./types/Pokemon";
 
 function App() {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [data, setData] = useState<Pokemon[]>([]);
   const [originalData, setOriginalData] = useState<Pokemon[]>([]);
   const [perPage] = useState<number>(20);
+
+  const [typePokemon, setTypePokemon] = useState<TypeProps[]>([]);
 
   const indexOfLastPokemon = currentPage * perPage;
   const indexOfFirstPokemon = indexOfLastPokemon - perPage;
@@ -40,6 +42,7 @@ function App() {
 
   useEffect(() => {
     getPokemon();
+    getType();
   }, []);
 
   const handlePageClick = (data: { selected: number }) => {
@@ -60,11 +63,42 @@ function App() {
     setData(filteredPokemons);
   };
 
+  const handleCategoryChange = (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    const type: any = event.target.value;
+    filterByType(type);
+  };
+
+  const getType = async () => {
+    const response: any = await axios.get("https://pokeapi.co/api/v2/type");
+    setTypePokemon(response.data.results);
+  };
+
+  const filterByType = (type: string) => {
+    if (type === "") {
+      setData(originalData);
+      return;
+    }
+    const filteredPokemons = originalData.filter((pokemon) =>
+      pokemon.types.some((t) => t.type.name === type)
+    );
+    setData(filteredPokemons);
+  };
+
   return (
     <div className="App">
-      <Header pokemonFilter={pokemonFilter} />
+      <Header pokemonFilter={pokemonFilter}>
+        <select onChange={handleCategoryChange}>
+          <option value="">Todos</option>
+          {typePokemon.map((type) => (
+            <option key={type.name} value={type.name}>
+              {type.name}
+            </option>
+          ))}
+        </select>
+      </Header>
       {isLoading ? (
-        // Adicionar o loading quando o estado isLoading é verdadeiro
         <div className="spinner"></div>
       ) : (
         <main>

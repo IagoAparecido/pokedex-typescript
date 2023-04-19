@@ -1,13 +1,13 @@
 import "./style.css";
-
 import { BsSearch } from "react-icons/bs";
 
-function Header({ pokemonFilter }: any) {
+function Header({ children, pokemonFilter }: any) {
   return (
     <header className="header">
       <div>
         <img src="../../pokemon-logo.png" alt="" />
         <form>
+          {children}
           <input type="text" onChange={(e) => pokemonFilter(e.target.value)} />
           <button disabled className="button">
             <BsSearch />
