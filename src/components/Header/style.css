@@ -31,9 +31,9 @@ header div form input {
   position: absolute;
   background-color: white;
   color: black;
-  margin-left: 83px;
+  margin-left: 94px;
 }
 
-select {
-  min-width: 78px;
+.select {
+  min-width: 89px;
 }

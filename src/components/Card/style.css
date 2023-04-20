@@ -42,9 +42,12 @@
 .poke_info h1 {
   font-size: 1.4rem;
   text-align: center;
+  font-weight: 600;
+  line-height: 1.5;
 }
 .poke_info p {
   font-size: 0.8rem;
+  margin-bottom: 0px;
 }
 
 .chao {
@@ -140,4 +143,47 @@
 .dark {
   background-color: #e2e2e2;
   border-bottom: 4px solid #705848;
+}
+
+.container_modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal_pokemon .chao_modal {
+  background-color: #f6f6f6;
+  height: 90px;
+  width: 200px;
+  position: absolute;
+  z-index: 1;
+  margin-top: 50px;
+  border-radius: 50%;
+  margin-right: 0px;
+}
+
+.modal_pokemon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  /* border: 1px solid; */
+  padding: 15px;
+  /* border-radius: 15px; */
+}
+
+.modal_pokemon span {
+  color: red;
+}
+.modal_pokemon h1 {
+  z-index: 2;
+}
+.modal_pokemon p {
+  color: ;
+}
+
+.modal_pokemon img {
+  width: 200px;
+  z-index: 2;
 }

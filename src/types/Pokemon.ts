@@ -9,6 +9,17 @@ export interface Pokemon {
       name: string;
     };
   }[];
+  abilities: {
+    ability: {
+      name: string;
+    };
+  }[];
+  stats: {
+    base_stat: any;
+    stat: {
+      name: string;
+    };
+  }[];
 }
 
 export interface PokemonResult {

@@ -15,6 +15,7 @@ function App() {
   const [perPage] = useState<number>(20);
 
   const [typePokemon, setTypePokemon] = useState<TypeProps[]>([]);
+  const [selectedType, setSelectedType] = useState<string>("");
 
   const indexOfLastPokemon = currentPage * perPage;
   const indexOfFirstPokemon = indexOfLastPokemon - perPage;
@@ -52,11 +53,21 @@ function App() {
   const pokemonFilter = (name: string) => {
     var filteredPokemons = [];
     if (name === "") {
-      setData(originalData);
+      setData(
+        originalData.filter(
+          (pokemon) =>
+            selectedType === "" ||
+            pokemon.types.some((t) => t.type.name === selectedType)
+        )
+      );
       return;
     }
     for (var i in originalData) {
-      if (originalData[i].name.includes(name)) {
+      if (
+        originalData[i].name.includes(name) &&
+        (selectedType === "" ||
+          originalData[i].types.some((t) => t.type.name === selectedType))
+      ) {
         filteredPokemons.push(originalData[i]);
       }
     }
@@ -67,6 +78,7 @@ function App() {
     event: React.ChangeEvent<HTMLSelectElement>
   ) => {
     const type: any = event.target.value;
+    setSelectedType(type);
     filterByType(type);
   };
 
@@ -86,10 +98,12 @@ function App() {
     setData(filteredPokemons);
   };
 
+  console.log(currentData);
+
   return (
     <div className="App">
       <Header pokemonFilter={pokemonFilter}>
-        <select onChange={handleCategoryChange}>
+        <select className="select" onChange={handleCategoryChange}>
           <option value="">Todos</option>
           {typePokemon.map((type) => (
             <option key={type.name} value={type.name}>
@@ -109,6 +123,10 @@ function App() {
               img={pokemon.sprites.front_default}
               type={pokemon.types.map((type) => type.type.name)}
               id={pokemon.id}
+              abilities={pokemon.abilities.map(
+                (ability) => ability.ability.name
+              )}
+              base_stats={pokemon.stats.map((stat) => stat.base_stat)}
             />
           ))}
         </main>
