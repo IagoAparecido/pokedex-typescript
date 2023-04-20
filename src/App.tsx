@@ -104,7 +104,7 @@ function App() {
     <div className="App">
       <Header pokemonFilter={pokemonFilter}>
         <select className="select" onChange={handleCategoryChange}>
-          <option value="">Todos</option>
+          <option value="">All</option>
           {typePokemon.map((type) => (
             <option key={type.name} value={type.name}>
               {type.name}
@@ -127,6 +127,7 @@ function App() {
                 (ability) => ability.ability.name
               )}
               base_stats={pokemon.stats.map((stat) => stat.base_stat)}
+              name_stats={pokemon.stats.map((stat) => stat.stat.name)}
             />
           ))}
         </main>

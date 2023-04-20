@@ -12,22 +12,31 @@ type Props = {
   id: number;
   abilities: string[];
   base_stats: any;
+  name_stats: any;
 };
 
-function Card({ type, name, img, id, abilities, base_stats }: Props) {
+function Card({
+  type,
+  name,
+  img,
+  id,
+  abilities,
+  base_stats,
+  name_stats,
+}: Props) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const typeHandle = () => {
+  const handleType = () => {
     if (type.length > 1) {
       return type.join(" | ");
     }
     return type[0];
   };
 
-  const abilitiesHandle = () => {
+  const handleAbilities = () => {
     if (abilities.length > 1) {
       return abilities.join(" | ");
     }
@@ -44,7 +53,7 @@ function Card({ type, name, img, id, abilities, base_stats }: Props) {
           </div>
           <span className="chao"></span>
           <div className="poke_info">
-            <p>{typeHandle()}</p>
+            <p>{handleType()}</p>
             <h1>{name}</h1>
           </div>
         </div>
@@ -59,20 +68,49 @@ function Card({ type, name, img, id, abilities, base_stats }: Props) {
             <img src={img} alt="" />
             <div className="chao_modal"></div>
             <h1>{name}</h1>
-            <p>{typeHandle()}</p>
+            <p>{handleType()}</p>
           </div>
-          <div>
-            <h4>Habilidades</h4>
-            <p>{abilitiesHandle()}</p>
+          <div className="modal_habilities">
+            <h4>Abilities</h4>
+            <p>{handleAbilities()}</p>
           </div>
-          <div>
+          <div className="modal_stats">
             <h2>Status</h2>
-            <h5>HP {base_stats[0]}</h5>
-            <h5>ATTACK {base_stats[1]}</h5>
-            <h5>DEFENSE {base_stats[2]}</h5>
-            <h5>SPECIAL-ATTACK {base_stats[3]}</h5>
-            <h5>SPECIAL-DEFENSE {base_stats[4]}</h5>
-            <h5>SPEED {base_stats[5]}</h5>
+            <div className="modal_stats_content">
+              <div className="stat_1">
+                <h5 className={name_stats[0]}>
+                  HP:
+                  <br /> {base_stats[0]}
+                </h5>
+                <br />
+                <br />
+
+                <h5 className={name_stats[1]}>
+                  ATTACK:
+                  <br /> {base_stats[1]}
+                </h5>
+              </div>
+              <div className="stat_2">
+                <h5 className={name_stats[2]}>
+                  DEFENSE: <br /> {base_stats[2]}
+                </h5>
+                <br />
+                <br />
+                <h5 className={name_stats[3]}>
+                  SPECIAL-ATTACK: <br /> {base_stats[3]}
+                </h5>
+              </div>
+              <div className="stat_3">
+                <h5 className={name_stats[4]}>
+                  SPECIAL-DEFENSE: <br /> {base_stats[4]}
+                </h5>
+                <br />
+                <h5 className={name_stats[5]}>
+                  SPEED:
+                  <br /> {base_stats[5]}
+                </h5>
+              </div>
+            </div>
           </div>
         </Modal.Body>
         <Modal.Footer></Modal.Footer>

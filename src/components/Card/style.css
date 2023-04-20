@@ -168,9 +168,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  /* border: 1px solid; */
   padding: 15px;
-  /* border-radius: 15px; */
 }
 
 .modal_pokemon span {
@@ -182,8 +180,62 @@
 .modal_pokemon p {
   color: ;
 }
-
 .modal_pokemon img {
   width: 200px;
   z-index: 2;
+}
+
+.modal_habilities {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid #f1f1f1f1;
+  border-bottom: 1px solid #f1f1f1f1;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.modal_stats {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.modal_stats .modal_stats_content {
+  display: flex;
+  gap: 10px;
+}
+
+.stat_1,
+.stat_2,
+.stat_3 {
+  display: flex;
+  flex-direction: column;
+  /* gap: 20px; */
+  width: 33%;
+}
+
+.attack {
+  color: red;
+}
+
+.defense {
+  color: blue;
+}
+
+.special-attack {
+  color: orange;
+}
+
+.special-defense {
+  color: green;
+}
+
+.speed {
+  color: purple;
 }
